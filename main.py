@@ -34,13 +34,13 @@ detections = []
 for box in boxes:
     cls_id     = int(box.cls[0])
     class_name = names[cls_id]                # ← get human-readable name
-    conf       = float(box.conf[0])
-    xyxy       = box.xyxy[0].tolist()
+    # conf       = float(box.conf[0])
+    # xyxy       = box.xyxy[0].tolist()
     detections.append({
-        "class_id":    cls_id,
+        # "class_id":    cls_id,
         "class_name":  class_name,
-        "confidence":  conf,
-        "bbox":        xyxy
+        # "confidence":  conf,
+        # "bbox":        xyxy
     })
 
 # Serialize and publish
