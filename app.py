@@ -50,14 +50,24 @@ placeholder = st.empty()
 # Auto-refresh every 2 seconds
 while True:
     with placeholder.container():
-        st.subheader("Live Object Count")
+        st.subheader("📊 Live Object Counts")
+
         if counts:
-            df = pd.DataFrame(counts.items(), columns=["Object", "Count"])
-            st.bar_chart(df.set_index("Object"))
+            # Convert Counter to DataFrame
+            df = pd.DataFrame.from_dict(counts, orient='index', columns=['Count'])
+            df.index.name = 'Object'
+            df = df.sort_values(by="Count", ascending=False)
+
+            # Show bar chart and table side-by-side
+            col1, col2 = st.columns(2)
+            with col1:
+                st.bar_chart(df)
+            with col2:
+                st.dataframe(df)
         else:
             st.info("Waiting for detections...")
 
-        st.subheader("Last 20 Detections")
-        st.write(detection_log[-20:])
+        st.subheader("📝 Last 20 Detections")
+        st.write(", ".join(detection_log[-20:]))
 
     time.sleep(2)
