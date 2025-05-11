@@ -15,7 +15,7 @@ model = YOLO("yolov8s.pt")
 names = model.names  # e.g. {0: 'person', 1: 'bicycle', …}
 
 # Create and connect the MQTT client
-mqtt_client = mqtt.Client()
+mqtt_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqtt_client.connect(MQTT_BROKER, MQTT_PORT, 60)
 
 # Get one frame from ESP32 CAM
@@ -27,7 +27,7 @@ image = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
 # Run inference on the frame
 # results = model.predict(source=image)
 
-results = model.predict(source=image)
+results = model.predict(source=image, conf=0.5)
 boxes = results[0].boxes
 
 detections = []
