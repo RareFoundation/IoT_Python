@@ -20,7 +20,7 @@ mqtt_client.connect(MQTT_BROKER, MQTT_PORT, 60)
 
 # Get one frame from ESP32 CAM
 while 1:
-    response = requests.get("http://192.168.100.64/capture")
+    response = requests.get("http://192.168.100.67/capture")
     img_array = np.frombuffer(response.content, np.uint8)
     image = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
 
