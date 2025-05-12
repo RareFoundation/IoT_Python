@@ -42,7 +42,7 @@ mqtt_thread.daemon = True
 mqtt_thread.start()
 
 # Streamlit UI
-st.title("YOLOv8 Object Detection via MQTT")
+st.title("📸 Stocktake Object Detection")
 st.markdown("📡 Listening to MQTT topic: `" + MQTT_TOPIC + "`")
 
 placeholder = st.empty()
