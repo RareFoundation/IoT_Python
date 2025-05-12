@@ -5,7 +5,7 @@ import requests
 import paho.mqtt.client as mqtt
 import json
 
-# --- MQTT CONFIGURATION ---
+# MQTT CONFIGURATION
 MQTT_BROKER = "broker.hivemq.com"
 MQTT_PORT = 1883
 MQTT_TOPIC = "esp32/camera/yolo"
